@@ -10,7 +10,7 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-version = '1.0.0-SNAPSHOT'
+version = '1.0.0'
 group = 'io.github.micwan88'
 
 // In this section you declare where to find the dependencies of your project

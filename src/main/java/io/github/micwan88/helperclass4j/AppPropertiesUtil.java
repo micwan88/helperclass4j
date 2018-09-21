@@ -94,7 +94,7 @@ public class AppPropertiesUtil {
 		if (!reload && appPropertiesMap.containsKey(resourcesName))
 			return appPropertiesMap.get(resourcesName);
 		
-		myLogger.debug("Properties {} is not yet load or force reload, try loading it ...", resourcesName);
+		myLogger.debug("Properties {} is not yet load or force reload", resourcesName);
 		
 		Properties tmpProperties = loadProperties(resourcesName);
 		if (tmpProperties != null)
