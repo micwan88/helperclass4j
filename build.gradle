@@ -20,6 +20,12 @@ dependencies {
     //Log4j2
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.7'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.7'
+    
+    //Http Client
+    compile 'org.apache.httpcomponents:httpclient:4.5.3'
+    
+    //DBCP
+    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
