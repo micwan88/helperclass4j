@@ -1,4 +1,4 @@
-package io.github.micwan88.helperclass4j.util.db;
+package io.github.micwan88.helperclass4j.db;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -18,7 +18,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import io.github.micwan88.helperclass4j.util.AppPropertiesUtil;
+import io.github.micwan88.helperclass4j.AppPropertiesUtil;
 
 public class SQLConnectionUtil {
 	public static final String APP_PROPERTY_KEY_JDBC_DRIVER_CLASS = "jdbc.driverClassName";

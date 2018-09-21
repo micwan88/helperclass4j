@@ -1,4 +1,4 @@
-package io.github.micwan88.helperclass4j.util;
+package io.github.micwan88.helperclass4j;
 
 import java.io.BufferedReader;
 import java.io.IOException;

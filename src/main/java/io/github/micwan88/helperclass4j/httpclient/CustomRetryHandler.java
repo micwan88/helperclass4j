@@ -1,4 +1,4 @@
-package io.github.micwan88.helperclass4j.util.httpclient;
+package io.github.micwan88.helperclass4j.httpclient;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
