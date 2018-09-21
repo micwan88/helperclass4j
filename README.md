@@ -10,7 +10,6 @@ This library is created for my own interest but it is welcome for anyone to fork
 In your build.gradle, add below dependency (please modify the version accordingly, refer to release)
 ``` gradle
 repositories {
-    // gatecoinapi4j is hosting in jcenter
     jcenter()
 }
 
