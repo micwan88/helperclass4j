@@ -1,5 +1,7 @@
 # Welcome to helperclass4j
 
+[ ![Download](https://api.bintray.com/packages/micwan88/micMavenRepos/helperclass4j/images/download.svg) ](https://bintray.com/micwan88/micMavenRepos/helperclass4j/_latestVersion)
+
 This is a java helper class library for the author (`Michael Wan`) self usage.
 
 ## Contribution
