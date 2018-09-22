@@ -10,6 +10,8 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
 version = '1.0.1-SNAPSHOT'
 group = 'io.github.micwan88'
 
