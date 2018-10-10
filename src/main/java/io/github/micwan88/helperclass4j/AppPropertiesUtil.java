@@ -53,7 +53,19 @@ public class AppPropertiesUtil {
 		
 		myLogger.debug("try loading property file {} in classpath", resourcesName);
 		
-		InputStream inStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("/" + resourcesName);
+		/**
+		 * There are three methods to load resources in classpath
+ 
+		//Absolute path for resources name and without leading "/"
+		AppPropertiesUtil.class.getClassLoader().getResourceAsStream(resourcesName);
+		Thread.currentThread().getContextClassLoader().getResourceAsStream(resourcesName);
+		
+		//Absolute path for resources name if leading "/", relative path if no leading "/"
+		AppPropertiesUtil.class.getClass().getResourceAsStream(resourcesName);
+		*/
+		
+		//This work for both webapp and standalone java app
+		InputStream inStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(resourcesName);
 		if (inStream == null) {
 			myLogger.error("{} not found in classpath !", resourcesName);
 			return null;
