@@ -53,7 +53,7 @@ public class AppPropertiesUtil {
 		
 		myLogger.debug("try loading property file {} in classpath", resourcesName);
 		
-		InputStream inStream = AppPropertiesUtil.class.getClass().getResourceAsStream("/" + resourcesName);
+		InputStream inStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("/" + resourcesName);
 		if (inStream == null) {
 			myLogger.error("{} not found in classpath !", resourcesName);
 			return null;
