@@ -24,6 +24,9 @@ public class DynamicAppLoader {
 		this.className = className;
 		
 		byteClassLoader = new ByteClassLoader(this.getClass().getClassLoader());
+		
+		//Change the contextclass loader for resources loading
+		Thread.currentThread().setContextClassLoader(byteClassLoader);
 	}
 
 	public void invokeMain() {
