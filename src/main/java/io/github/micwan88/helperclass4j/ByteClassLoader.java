@@ -64,8 +64,6 @@ public class ByteClassLoader extends ClassLoader {
 	}
 	
 	private byte[] getByteArrayFromZip(String resourcesName) {
-		String filePath = resourcesName.replaceAll("\\.", "/").concat(".class");
-		
 		byte[] tmpBuffer = new byte[1024];
 		ZipInputStream zipInStream = null;
 		ByteArrayOutputStream baos = null;
@@ -74,7 +72,7 @@ public class ByteClassLoader extends ClassLoader {
 			ZipEntry zipEntry = null;
 			
 			while ((zipEntry = zipInStream.getNextEntry()) != null) {
-				if (zipEntry.getName().equalsIgnoreCase(filePath)) {
+				if (zipEntry.getName().equalsIgnoreCase(resourcesName)) {
 					break;
 				}
 				zipEntry = null;
@@ -82,7 +80,7 @@ public class ByteClassLoader extends ClassLoader {
 			}
 			
 			if (zipEntry == null) {
-				myLogger.error("Cannot find {} in zip", filePath);
+				myLogger.error("Cannot find {} in zip", resourcesName);
 				return null;
 			}
 			
