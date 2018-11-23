@@ -3,6 +3,7 @@ package io.github.micwan88.helperclass4j;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -29,7 +30,8 @@ public class ByteClassLoader extends ClassLoader {
 		
 		if (isJar) {
 			myLogger.debug("Is jar file content, extract the bytes ... :{}", className);
-			byte[] extractedBytes = getByteArrayFromZip(className);
+			String filePath = className.replaceAll("\\.", "/").concat(".class");
+			byte[] extractedBytes = getByteArrayFromZip(filePath);
 			if (extractedBytes == null)
 				throw new ClassNotFoundException("Cannot load jar in bytes or class not found in jar");
 			return defineClass(className, extractedBytes, 0, extractedBytes.length);
@@ -45,13 +47,24 @@ public class ByteClassLoader extends ClassLoader {
 		return this.loadClass(className);
 	}
 	
+	@Override
+	public InputStream getResourceAsStream(String paramString) {
+		if (classDataInBytes != null && isJar) {
+			myLogger.debug("Is jar file content, try get the resources ... :{}", paramString);
+			byte[] extractedBytes = getByteArrayFromZip(paramString);
+			if (extractedBytes != null)
+				return new ByteArrayInputStream(extractedBytes);
+		}
+		return super.getResourceAsStream(paramString);
+	}
+
 	public void initClassDataInBytes(byte[] classDataInBytes, boolean isJar) {
 		this.classDataInBytes = classDataInBytes;
 		this.isJar = isJar;
 	}
 	
-	private byte[] getByteArrayFromZip(String className) {
-		String filePath = className.replaceAll("\\.", "/").concat(".class");
+	private byte[] getByteArrayFromZip(String resourcesName) {
+		String filePath = resourcesName.replaceAll("\\.", "/").concat(".class");
 		
 		byte[] tmpBuffer = new byte[1024];
 		ZipInputStream zipInStream = null;
