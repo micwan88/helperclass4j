@@ -29,11 +29,10 @@ public class ByteClassLoader extends ClassLoader {
 			throw new ClassNotFoundException("classDataInBytes is empty");
 		
 		if (isJar) {
-			myLogger.debug("Is jar file content, extract the bytes ... :{}", className);
 			String filePath = className.replaceAll("\\.", "/").concat(".class");
 			byte[] extractedBytes = getByteArrayFromZip(filePath);
 			if (extractedBytes == null)
-				throw new ClassNotFoundException("Cannot load jar in bytes or class not found in jar");
+				throw new ClassNotFoundException("Cannot find " + filePath + " in bytes");
 			return defineClass(className, extractedBytes, 0, extractedBytes.length);
 		}
 		
@@ -50,7 +49,6 @@ public class ByteClassLoader extends ClassLoader {
 	@Override
 	public InputStream getResourceAsStream(String paramString) {
 		if (classDataInBytes != null && isJar) {
-			myLogger.debug("Is jar file content, try get the resources ... :{}", paramString);
 			byte[] extractedBytes = getByteArrayFromZip(paramString);
 			if (extractedBytes != null)
 				return new ByteArrayInputStream(extractedBytes);
@@ -79,10 +77,8 @@ public class ByteClassLoader extends ClassLoader {
 				zipInStream.closeEntry();
 			}
 			
-			if (zipEntry == null) {
-				myLogger.error("Cannot find {} in zip", resourcesName);
+			if (zipEntry == null)
 				return null;
-			}
 			
 			baos = new ByteArrayOutputStream();
 			int count;

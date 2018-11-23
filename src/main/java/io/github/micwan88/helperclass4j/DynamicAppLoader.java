@@ -30,19 +30,15 @@ public class DynamicAppLoader {
 	}
 
 	public void invokeMain() {
-		myLogger.debug("Start DynamicAppLoader ...");
-		
 		try {
-			myLogger.debug("Load {} bytes into class: {}", classDataInBytes.length, className);
+			//Load class from bytes
 			Class<?> dynamicClass = byteClassLoader.loadClass(className, classDataInBytes, true);
 			
 			Method mainMethod = dynamicClass.getMethod(MAIN_METHOD_NAME, String[].class);
-			
 			String[] args = null;
 			
-			myLogger.debug("Invoke static main ...");
+			//Calling main method
 			mainMethod.invoke(null, (Object)args);
-			myLogger.debug("End main");
 		} catch (ClassNotFoundException e) {
 			myLogger.error("Cannot found the target class from byte data", e);
 		} catch (NoSuchMethodException | SecurityException e) {
@@ -52,8 +48,6 @@ public class DynamicAppLoader {
 		} catch (Exception e) {
 			myLogger.error("Unknown exception", e);
 		}
-		
-		myLogger.debug("End DynamicAppLoader Normally");
 	}
 	
 	public static void invokeMain(byte[] classDataInBytes, String className) {
