@@ -29,8 +29,8 @@ public class Handler extends URLStreamHandler {
 			throw new UnsupportedOperationException("This handler only support to be created with byte array in constructor");
 		
 		//Resource not match
-		if (!resourceName.equals(paramURL.getFile()))
-			throw new UnsupportedOperationException("URL file name does not match with assigned resource name: " + resourceName);
+		if (!paramURL.getFile().endsWith(resourceName))
+			throw new UnsupportedOperationException("URL file (" + paramURL.getFile() + ") name does not match with assigned resource name: " + resourceName);
 		
 		ByteURLConnection byteURLConnection = new ByteURLConnection(paramURL, byteContent);
 		
