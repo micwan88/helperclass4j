@@ -3,12 +3,15 @@ package io.github.micwan88.helperclass4j;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import io.github.micwan88.helperclass4j.protocol.handler.bytes.Handler;
 
 public class ByteClassLoader extends ClassLoader {
 	private static final Logger myLogger = LogManager.getLogger(ByteClassLoader.class);
@@ -47,13 +50,18 @@ public class ByteClassLoader extends ClassLoader {
 	}
 	
 	@Override
-	public InputStream getResourceAsStream(String paramString) {
+	protected URL findResource(String paramString) {
 		if (classDataInBytes != null && isJar) {
 			byte[] extractedBytes = getByteArrayFromZip(paramString);
-			if (extractedBytes != null)
-				return new ByteArrayInputStream(extractedBytes);
+			if (extractedBytes != null) {
+				try {
+					return new URL(null, "bytes:///" + paramString, new Handler(extractedBytes, paramString));
+				} catch (MalformedURLException e) {
+					//Do nothing
+				}
+			}
 		}
-		return super.getResourceAsStream(paramString);
+		return null;
 	}
 
 	public void initClassDataInBytes(byte[] classDataInBytes, boolean isJar) {
