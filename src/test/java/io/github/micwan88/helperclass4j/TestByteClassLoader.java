@@ -29,7 +29,15 @@ public class TestByteClassLoader {
 	@Test
 	public void startTest() {
 		ByteClassLoader byteClassLoader = new ByteClassLoader(this.getClass().getClassLoader());
-		byteClassLoader.initClassDataInBytes(jarInBytes, true);
+		
+		boolean noError = false;
+		try {
+			byteClassLoader.loadJarDataInBytes(jarInBytes);
+			noError = true;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Assert.assertTrue(noError);
 		
 		Class<?> helloWorldClass = null;
 		try {
@@ -47,7 +55,7 @@ public class TestByteClassLoader {
 		}
 		Assert.assertNotNull(mainMethod);
 		
-		boolean noError = false;
+		noError = false;
 		String[] args = null;
 		try {
 			mainMethod.invoke(null, (Object)args);
