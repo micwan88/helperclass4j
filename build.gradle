@@ -27,6 +27,9 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.7'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.7'
     
+    //Common Codec
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
+    
     //Http Client
     compile 'org.apache.httpcomponents:httpclient:4.5.3'
     
