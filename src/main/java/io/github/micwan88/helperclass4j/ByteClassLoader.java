@@ -46,9 +46,9 @@ public class ByteClassLoader extends ClassLoader {
 	public Class<?> loadClass(String className, byte[] classDataInBytes, boolean isJar) throws ClassNotFoundException, 
 		IOException {
 		if (isJar)
-			loadByteDataMapFromZip(classDataInBytes);
+			loadJarDataInBytes(classDataInBytes);
 		else
-			loadSingleFileDataInBytes(classDataInBytes, className);
+			loadSingleFileDataInBytes(classDataInBytes, className.replaceAll("\\.", "/").concat(".class"));
 		
 		return this.loadClass(className);
 	}
