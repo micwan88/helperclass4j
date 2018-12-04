@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
 	//helperclass4j
-	compile group: 'io.github.micwan88', name: 'helperclass4j', version: '1.0.0'
+	compile group: 'io.github.micwan88', name: 'helperclass4j', version: '1.0.3'
 }
 ```
 
