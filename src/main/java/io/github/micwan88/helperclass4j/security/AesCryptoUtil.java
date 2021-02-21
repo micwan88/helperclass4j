@@ -16,6 +16,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -58,7 +59,8 @@ public class AesCryptoUtil {
 				iteration, PBKDF2_PASSWORD_KEY_SIZE_IN_BITS);
 		SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance(DEFAULT_PBKDF2_TYPE);
 		
-		SecretKey secretKey = secretKeyFactory.generateSecret(keySpec);
+		SecretKey masterKey = secretKeyFactory.generateSecret(keySpec);
+		SecretKey secretKey = new SecretKeySpec(masterKey.getEncoded(), DEFAULT_KEY_TYPE);
 		
 		myLogger.traceExit("No of bytes return: {}", secretKey.getEncoded().length);
 		return secretKey;
