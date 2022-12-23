@@ -16,7 +16,9 @@ sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 group = 'io.github.micwan88'
-version = '2.0.1'
+version = '2.0.1-SNAPSHOT'
+
+ext.releaseVer = !version.endsWith("SNAPSHOT")
 
 java {
     withJavadocJar()
@@ -89,5 +91,6 @@ publishing {
 }
 
 signing {
+    required { releaseVer }
     sign publishing.publications.helperclass4j
 }
