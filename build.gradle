@@ -47,11 +47,47 @@ dependencies {
 
 tasks.named('jar') {
     manifest {
-        attributes('Implementation-Title': project.name, 'Implementation-Version': project.version)
-        attributes('Automatic-Module-Name': 'io.github.micwan88')
+        attributes('Implementation-Title': project.name, 
+            'Implementation-Version': project.version,
+            'Automatic-Module-Name': project.group + '.' + project.name)
     }
 }
 
 tasks.named('test') {
     useJUnitPlatform() 
+}
+
+publishing {
+    publications {
+        helperclass4j(MavenPublication) {
+            from components.java
+
+            pom {
+                description = 'This is a java helper class library for the author (Michael Wan) self usage'
+                url = 'https://github.com/micwan88/helperclass4j'
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://github.com/micwan88/helperclass4j/blob/master/LICENSE'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'micwan88'
+                        name = 'Michael Wan'
+                        email = 'hkmicmic@gmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/micwan88/helperclass4j.git'
+                    developerConnection = 'scm:git:git@github.com:micwan88/helperclass4j.git'
+                    url = 'https://github.com/micwan88/helperclass4j'
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.helperclass4j
 }
