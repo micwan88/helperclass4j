@@ -9,13 +9,19 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
+    id 'signing'
 }
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
-version = '2.0.1'
 group = 'io.github.micwan88'
+version = '2.0.1'
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
 
 repositories {
     mavenCentral()
@@ -39,14 +45,10 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-	from sourceSets.main.allSource
-	classifier = 'sources'
-}
-
 tasks.named('jar') {
     manifest {
         attributes('Implementation-Title': project.name, 'Implementation-Version': project.version)
+        attributes('Automatic-Module-Name': 'io.github.micwan88')
     }
 }
 

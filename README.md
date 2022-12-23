@@ -13,12 +13,12 @@ This library is created for my own interest but it is welcome for anyone to fork
 In your build.gradle, add below dependency (please modify the version accordingly, refer to release)
 ``` gradle
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
 	//helperclass4j
-	compile group: 'io.github.micwan88', name: 'helperclass4j', version: '1.0.3'
+	implementation: 'io.github.micwan88:helperclass4j:2.0.1'
 }
 ```
 
