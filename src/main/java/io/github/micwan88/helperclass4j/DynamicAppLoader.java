@@ -15,10 +15,6 @@ public class DynamicAppLoader {
 	private byte[] classDataInBytes = null;
 	private String className = null;
 	
-	/**
-	 * @param classDataInBytes
-	 * @param className
-	 */
 	public DynamicAppLoader(byte[] classDataInBytes, String className) {
 		this.classDataInBytes = classDataInBytes;
 		this.className = className;

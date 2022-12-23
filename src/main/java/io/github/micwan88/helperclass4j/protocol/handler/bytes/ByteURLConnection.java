@@ -14,10 +14,6 @@ public class ByteURLConnection extends URLConnection {
 		super(paramURL);
 	}
 	
-	/**
-	 * @param paramURL
-	 * @param byteContent
-	 */
 	public ByteURLConnection(URL paramURL, byte[] byteContent) {
 		super(paramURL);
 		this.byteContent = byteContent;

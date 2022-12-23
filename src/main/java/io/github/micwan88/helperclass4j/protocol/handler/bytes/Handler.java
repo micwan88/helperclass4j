@@ -9,10 +9,6 @@ public class Handler extends URLStreamHandler {
 	private byte[] byteContent = null;
 	private String resourceName = null;
 
-	/**
-	 * @param byteContent
-	 * @param resourceName
-	 */
 	public Handler(byte[] byteContent, String resourceName) {
 		this.byteContent = byteContent;
 		this.resourceName = resourceName;
