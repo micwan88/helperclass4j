@@ -6,41 +6,50 @@
  * user guide available at https://docs.gradle.org/3.5/userguide/java_library_plugin.html
  */
 
-// Apply the java-library plugin to add support for Java Library
-apply plugin: 'java'
-apply plugin: 'maven'
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
-version = '1.0.4'
+
+version = '2.0.1'
 group = 'io.github.micwan88'
 
-// In this section you declare where to find the dependencies of your project
 repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    //Log4j2
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.7'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.7'
-    
     //Http Client
-    compile 'org.apache.httpcomponents:httpclient:4.5.3'
+    api 'org.apache.httpcomponents:httpclient:4.5.14'
     
+    //Log4j2
+    implementation 'org.apache.logging.log4j:log4j-api:2.19.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.19.0'
+
     //DBCP
-    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
+    implementation 'org.apache.commons:commons-dbcp2:2.9.0'
     
     //Common Codec
-    compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
+    testImplementation 'commons-codec:commons-codec:1.15'
 
     // Use JUnit test framework
-    testCompile 'junit:junit:4.12'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
 	from sourceSets.main.allSource
 	classifier = 'sources'
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': project.name, 'Implementation-Version': project.version)
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform() 
 }
