@@ -91,6 +91,10 @@ publishing {
 
     repositories {
         maven {
+            credentials {
+                username project.mavenRepoUserName
+                password project.mavenRepoPassword
+            }
             def releasesRepoUrl = 'https://s01.oss.sonatype.org/content/repositories/releases'
             def snapshotsRepoUrl = 'https://s01.oss.sonatype.org/content/repositories/snapshots'
             url = releaseVer ? releasesRepoUrl : snapshotsRepoUrl
