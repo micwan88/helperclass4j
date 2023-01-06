@@ -16,7 +16,7 @@ sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 group = 'io.github.micwan88'
-version = '2.0.1-SNAPSHOT'
+version = '2.0.1'
 
 ext.releaseVer = !version.endsWith("SNAPSHOT")
 
