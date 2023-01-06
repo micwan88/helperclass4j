@@ -1,7 +1,7 @@
 # Welcome to helperclass4j
 
-[![Build Status](https://travis-ci.org/micwan88/helperclass4j.svg?branch=master)](https://travis-ci.org/micwan88/helperclass4j)
-[ ![Download](https://api.bintray.com/packages/micwan88/micMavenRepos/helperclass4j/images/download.svg) ](https://bintray.com/micwan88/micMavenRepos/helperclass4j/_latestVersion)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/micwan88/helperclass4j/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/micwan88/helperclass4j/tree/master)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.micwan88/helperclass4j/badge.svg)](https://github.com/micwan88/helperclass4j)
 
 This is a java helper class library for the author (`Michael Wan`) self usage.
 
