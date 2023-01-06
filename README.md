@@ -1,7 +1,7 @@
 # Welcome to helperclass4j
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/micwan88/helperclass4j/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/micwan88/helperclass4j/tree/master)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.micwan88/helperclass4j/badge.svg)](https://github.com/micwan88/helperclass4j)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.micwan88/helperclass4j/badge.svg?version=2.0.1)](https://github.com/micwan88/helperclass4j)
 
 This is a java helper class library for the author (`Michael Wan`) self usage.
 
