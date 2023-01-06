@@ -16,7 +16,7 @@ sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 group = 'io.github.micwan88'
-version = '2.0.1'
+version = '2.0.2-SNAPSHOT'
 
 ext.releaseVer = !version.endsWith("SNAPSHOT")
 
@@ -91,10 +91,14 @@ publishing {
 
     repositories {
         maven {
+            def repoLogin = project.hasProperty('mavenRepoUserName') ? project['mavenRepoUserName'] : ''
+            def repoPasswd = project.hasProperty('mavenRepoPassword') ? project['mavenRepoPassword'] : ''
+
             credentials {
-                username project.mavenRepoUserName
-                password project.mavenRepoPassword
+                username repoLogin
+                password repoPasswd
             }
+
             def releasesRepoUrl = 'https://s01.oss.sonatype.org/content/repositories/releases'
             def snapshotsRepoUrl = 'https://s01.oss.sonatype.org/content/repositories/snapshots'
             url = releaseVer ? releasesRepoUrl : snapshotsRepoUrl
