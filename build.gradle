@@ -42,6 +42,9 @@ dependencies {
     
     //Common Codec
     testImplementation 'commons-codec:commons-codec:1.15'
+    
+    //Gson
+    implementation 'com.google.code.gson:gson:2.10'
 
     // Use JUnit test framework
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
